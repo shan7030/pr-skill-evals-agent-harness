@@ -1,0 +1,18 @@
+# Secrets
+.env
+
+# Substack article draft
+old_substack.md
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/

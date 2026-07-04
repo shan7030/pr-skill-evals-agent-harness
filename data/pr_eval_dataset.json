@@ -1,0 +1,145 @@
+[
+  {
+    "id": "pr_001",
+    "title": "Add pagination to audit log API",
+    "description": "Adds cursor-based pagination to the audit log endpoint. Default page size is 100. Docs and tests updated.",
+    "changed_files": [
+      "api/audit_logs.py",
+      "tests/test_audit_logs.py",
+      "docs/audit_logs.md"
+    ],
+    "diff_excerpt": "+ cursor param\n+ next_cursor response field\n+ tests for first page and second page\n+ docs/audit_logs.md updated",
+    "expected_facts": [
+      "cursor",
+      "pagination",
+      "audit log",
+      "page size",
+      "100",
+      "first page",
+      "second page"
+    ],
+    "forbidden_claims": [
+      "breaking change",
+      "database migration",
+      "oauth",
+      "frontend"
+    ]
+  },
+  {
+    "id": "pr_002",
+    "title": "Refactor billing webhook validation",
+    "description": "Moves duplicated Stripe signature validation into a shared helper. No behavior change intended.",
+    "changed_files": [
+      "billing/webhooks.py",
+      "billing/stripe_utils.py"
+    ],
+    "diff_excerpt": "+ validate_stripe_signature helper\n- duplicated validation code",
+    "expected_facts": [
+      "stripe",
+      "signature validation",
+      "shared helper",
+      "no behavior change"
+    ],
+    "forbidden_claims": [
+      "database",
+      "ui change",
+      "pagination",
+      "payment method",
+      "tests were added",
+      "regression test"
+    ]
+  },
+  {
+    "id": "pr_003",
+    "title": "Add empty-state UI for projects page",
+    "description": "Shows a friendly empty state when a user has no projects. Includes a CTA to create the first project.",
+    "changed_files": [
+      "web/src/pages/Projects.tsx",
+      "web/src/components/EmptyState.tsx"
+    ],
+    "diff_excerpt": "+ EmptyState component\n+ Create Project CTA",
+    "expected_facts": [
+      "empty state",
+      "projects page",
+      "create project",
+      "cta"
+    ],
+    "forbidden_claims": [
+      "backend api",
+      "billing",
+      "auth",
+      "tests added",
+      "database"
+    ]
+  },
+  {
+    "id": "pr_004",
+    "title": "Cache feature flag lookups",
+    "description": "Adds a 60 second in-memory cache around feature flag reads to reduce repeated calls during request handling.",
+    "changed_files": [
+      "flags/client.py",
+      "tests/test_flags.py"
+    ],
+    "diff_excerpt": "+ ttl_seconds=60\n+ cache hit path\n+ cache expiry test",
+    "expected_facts": [
+      "feature flag",
+      "60",
+      "cache",
+      "expiry"
+    ],
+    "forbidden_claims": [
+      "redis",
+      "database",
+      "breaking change",
+      "ui"
+    ]
+  },
+  {
+    "id": "pr_005",
+    "title": "Add CSV export for user reports",
+    "description": "Adds CSV export button to reports page. Export includes user_id, email, created_at, and status columns.",
+    "changed_files": [
+      "web/src/pages/Reports.tsx",
+      "api/reports_export.py"
+    ],
+    "diff_excerpt": "+ exportCsv\n+ /reports/export endpoint\n+ columns: user_id,email,created_at,status",
+    "expected_facts": [
+      "csv export",
+      "reports page",
+      "export",
+      "user_id",
+      "email",
+      "created_at",
+      "status"
+    ],
+    "forbidden_claims": [
+      "pdf export",
+      "excel export",
+      "billing webhook",
+      "authentication change",
+      "tests added"
+    ]
+  },
+  {
+    "id": "pr_006",
+    "title": "Tighten password reset token expiration",
+    "description": "Changes password reset tokens to expire after 30 minutes instead of 24 hours. Includes an expiration regression test.",
+    "changed_files": [
+      "auth/password_reset.py",
+      "tests/test_password_reset.py"
+    ],
+    "diff_excerpt": "- expires_in_hours=24\n+ expires_in_minutes=30\n+ expiration regression test",
+    "expected_facts": [
+      "password reset",
+      "30 minutes",
+      "24 hours",
+      "regression test"
+    ],
+    "forbidden_claims": [
+      "oauth login",
+      "signup flow",
+      "database migration",
+      "email template"
+    ]
+  }
+]
