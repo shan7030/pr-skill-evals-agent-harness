@@ -9,8 +9,6 @@ Run the same dataset through four skill versions (`v1_baseline` → `v4_review_r
 | **Skill eval (baseline)** | `run_real_skill_eval.py` | Skill instructions pasted into a single LLM prompt |
 | **Skill eval (agent harness)** | `run_agent_eval.py` | Agent loads `skills/*/SKILL.md` and gathers PR data via tool calls |
 
-**Suggested repo / folder name:** `pr-skill-evals-agent-harness`
-
 ## Architecture
 
 ### End-to-end pipeline
